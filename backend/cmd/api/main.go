@@ -82,7 +82,11 @@ func main() {
 	// 6. Запускаем веб-сервер
 	addr := ":" + cfg.Port
 	log.Printf("Сервер успешно запущен в окружении '%s' на порту %s", cfg.Env, cfg.Port)
-	if err := http.ListenAndServe(addr, mux); err != nil {
+	
+	// Оборачиваем роутер в CORS middleware
+	corsHandler := handler.CorsMiddleware(mux)
+	
+	if err := http.ListenAndServe(addr, corsHandler); err != nil {
 		log.Fatalf("Ошибка запуска веб-сервера: %v", err)
 	}
 }

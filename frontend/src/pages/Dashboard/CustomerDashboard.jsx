@@ -225,7 +225,7 @@ const CustomerDashboard = () => {
                       Сумма операции: <strong className="text-slate-200">{tx.amount.toLocaleString()} ₸</strong>
                       {tx.receipt_image_url && (
                         <a 
-                          href={tx.receipt_image_url} 
+                          href={`${api.BASE_URL}${tx.receipt_image_url}`} 
                           target="_blank" 
                           rel="noreferrer" 
                           className="ml-2 text-indigo-400 hover:underline inline-flex items-center"

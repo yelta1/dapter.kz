@@ -1,4 +1,5 @@
-const API_PREFIX = '/api/v1';
+const BASE_URL = import.meta.env.VITE_API_URL || '';
+const API_PREFIX = `${BASE_URL}/api/v1`;
 
 // Вспомогательный метод для получения заголовков запроса
 const getHeaders = (isMultipart = false) => {
@@ -33,6 +34,7 @@ const handleResponse = async (response) => {
 };
 
 export const api = {
+  BASE_URL,
   // --- АУТЕНТИФИКАЦИЯ ---
   
   // Регистрация владельца магазина

@@ -280,7 +280,7 @@ const AgreementDetail = () => {
                       <td className="p-4 text-xs">
                         {tx.receipt_image_url ? (
                           <a 
-                            href={tx.receipt_image_url} 
+                            href={`${api.BASE_URL}${tx.receipt_image_url}`} 
                             target="_blank" 
                             rel="noreferrer" 
                             className="text-indigo-400 hover:text-indigo-300 hover:underline flex items-center gap-1"

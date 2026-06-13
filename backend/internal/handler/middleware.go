@@ -102,3 +102,20 @@ func GetUserPhoneFromContext(ctx context.Context) (string, bool) {
 	val, ok := ctx.Value(phoneCtxKey).(string)
 	return val, ok
 }
+
+// CorsMiddleware добавляет CORS-заголовки и обрабатывает предзапросы OPTIONS
+func CorsMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+		// Если это предварительный запрос (OPTIONS), завершаем его успешно
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
+}
