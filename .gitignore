@@ -1,0 +1,25 @@
+# Системные файлы и IDE
+.idea/
+.vscode/
+*.log
+Thumbs.db
+.DS_Store
+
+# Бэкенд (Go)
+backend/.env
+backend/uploads/
+backend/*.exe
+backend/tmp_build.exe
+*.exe
+
+# Фронтенд (React / Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
